@@ -1,0 +1,238 @@
+﻿#if __DESIGNER_DATA
+#error Do not define __DESIGNER_DATA.
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<om:MetaModel MajorVersion="1" MinorVersion="3" Core="2b131234-7959-458d-834f-2dc0769ce683" ScheduleModel="66366196-361d-448d-976f-cab5e87496d2" xmlns:om="http://schemas.microsoft.com/BizTalk/2003/DesignerData">
+    <om:Element Type="Module" OID="f554af5a-b1b4-4f80-a330-2e2adaec7339" LowerBound="1.1" HigherBound="49.1">
+        <om:Property Name="ReportToAnalyst" Value="True" />
+        <om:Property Name="Name" Value="GLC.Integration.CargowiseOne.Remodeez" />
+        <om:Property Name="Signal" Value="False" />
+        <om:Element Type="PortType" OID="d452a3a1-6b8d-4333-905b-f82c041607df" ParentLink="Module_PortType" LowerBound="4.1" HigherBound="11.1">
+            <om:Property Name="Synchronous" Value="False" />
+            <om:Property Name="TypeModifier" Value="Internal" />
+            <om:Property Name="ReportToAnalyst" Value="True" />
+            <om:Property Name="Name" Value="PortType_3" />
+            <om:Property Name="Signal" Value="False" />
+            <om:Element Type="OperationDeclaration" OID="46906d47-246a-4411-8d8c-19e01ccaa061" ParentLink="PortType_OperationDeclaration" LowerBound="6.1" HigherBound="10.1">
+                <om:Property Name="OperationType" Value="OneWay" />
+                <om:Property Name="ReportToAnalyst" Value="True" />
+                <om:Property Name="Name" Value="Operation_1" />
+                <om:Property Name="Signal" Value="False" />
+                <om:Element Type="MessageRef" OID="90646e49-f0e8-4612-8d0b-7e8f913fcd20" ParentLink="OperationDeclaration_RequestMessageRef" LowerBound="8.13" HigherBound="8.79">
+                    <om:Property Name="Ref" Value="GLC.Integration.CargowiseoneInboundCommon.Schemas.EDI940.EDI940Xml" />
+                    <om:Property Name="ReportToAnalyst" Value="True" />
+                    <om:Property Name="Name" Value="Request" />
+                    <om:Property Name="Signal" Value="False" />
+                </om:Element>
+            </om:Element>
+        </om:Element>
+        <om:Element Type="PortType" OID="ba312fa6-b350-4c6b-9a75-656038c9a135" ParentLink="Module_PortType" LowerBound="11.1" HigherBound="18.1">
+            <om:Property Name="Synchronous" Value="False" />
+            <om:Property Name="TypeModifier" Value="Internal" />
+            <om:Property Name="ReportToAnalyst" Value="True" />
+            <om:Property Name="Name" Value="PortType_5" />
+            <om:Property Name="Signal" Value="False" />
+            <om:Element Type="OperationDeclaration" OID="d7c3e6bf-69d8-422c-9ccc-afc274f85d88" ParentLink="PortType_OperationDeclaration" LowerBound="13.1" HigherBound="17.1">
+                <om:Property Name="OperationType" Value="OneWay" />
+                <om:Property Name="ReportToAnalyst" Value="True" />
+                <om:Property Name="Name" Value="Operation_1" />
+                <om:Property Name="Signal" Value="False" />
+                <om:Element Type="MessageRef" OID="7090902e-6a03-4661-a4fb-3881f9d841b2" ParentLink="OperationDeclaration_RequestMessageRef" LowerBound="15.13" HigherBound="15.83">
+                    <om:Property Name="Ref" Value="GLC.Integration.CargowiseoneInboundCommon.Schemas.UniversalInterchange" />
+                    <om:Property Name="ReportToAnalyst" Value="True" />
+                    <om:Property Name="Name" Value="Request" />
+                    <om:Property Name="Signal" Value="False" />
+                </om:Element>
+            </om:Element>
+        </om:Element>
+        <om:Element Type="ServiceDeclaration" OID="cd19b29d-cf07-4b65-93ba-2da8b22445c3" ParentLink="Module_ServiceDeclaration" LowerBound="18.1" HigherBound="48.1">
+            <om:Property Name="InitializedTransactionType" Value="False" />
+            <om:Property Name="IsInvokable" Value="False" />
+            <om:Property Name="TypeModifier" Value="Internal" />
+            <om:Property Name="ReportToAnalyst" Value="True" />
+            <om:Property Name="Name" Value="ProcessWalmart" />
+            <om:Property Name="Signal" Value="False" />
+            <om:Element Type="ServiceBody" OID="1faace75-940d-4cf7-add2-36577ac98a68" ParentLink="ServiceDeclaration_ServiceBody">
+                <om:Property Name="Signal" Value="False" />
+                <om:Element Type="Receive" OID="567129b1-ef2c-43ba-b8c2-704c94be263f" ParentLink="ServiceBody_Statement" LowerBound="30.1" HigherBound="32.1">
+                    <om:Property Name="Activate" Value="True" />
+                    <om:Property Name="PortName" Value="ReceiveWalmart" />
+                    <om:Property Name="MessageName" Value="ReceiveEDIInterchange" />
+                    <om:Property Name="OperationName" Value="Operation_1" />
+                    <om:Property Name="OperationMessageName" Value="Request" />
+                    <om:Property Name="ReportToAnalyst" Value="True" />
+                    <om:Property Name="Name" Value="Receive_1" />
+                    <om:Property Name="Signal" Value="True" />
+                </om:Element>
+                <om:Element Type="Construct" OID="46f0bb1b-2721-4b39-9b71-1a210b5762ce" ParentLink="ServiceBody_Statement" LowerBound="32.1" HigherBound="38.1">
+                    <om:Property Name="ReportToAnalyst" Value="True" />
+                    <om:Property Name="Name" Value="ConstructMessage_1" />
+                    <om:Property Name="Signal" Value="True" />
+                    <om:Element Type="Transform" OID="b9c7dde4-3eaa-4ede-b835-c6fb9c2cd4f1" ParentLink="ComplexStatement_Statement" LowerBound="35.1" HigherBound="37.1">
+                        <om:Property Name="ClassName" Value="GLC.Integration.CargowiseOne.Remodeez.Schemas.TransformEDI940WALToUniversalShipment" />
+                        <om:Property Name="ReportToAnalyst" Value="True" />
+                        <om:Property Name="Name" Value="Transform_1" />
+                        <om:Property Name="Signal" Value="False" />
+                        <om:Element Type="MessagePartRef" OID="3d72af55-1699-4e2f-a019-8746f199b9e9" ParentLink="Transform_InputMessagePartRef" LowerBound="36.125" HigherBound="36.146">
+                            <om:Property Name="MessageRef" Value="ReceiveEDIInterchange" />
+                            <om:Property Name="ReportToAnalyst" Value="True" />
+                            <om:Property Name="Name" Value="MessagePartReference_1" />
+                            <om:Property Name="Signal" Value="False" />
+                        </om:Element>
+                        <om:Element Type="MessagePartRef" OID="1e6cb018-a9c2-46f1-8455-bf86dcf53993" ParentLink="Transform_OutputMessagePartRef" LowerBound="36.28" HigherBound="36.36">
+                            <om:Property Name="MessageRef" Value="Shipment" />
+                            <om:Property Name="ReportToAnalyst" Value="True" />
+                            <om:Property Name="Name" Value="MessagePartReference_2" />
+                            <om:Property Name="Signal" Value="False" />
+                        </om:Element>
+                    </om:Element>
+                    <om:Element Type="MessageRef" OID="396315c7-719b-4154-a180-f6cd71dccfa7" ParentLink="Construct_MessageRef" LowerBound="33.23" HigherBound="33.31">
+                        <om:Property Name="Ref" Value="Shipment" />
+                        <om:Property Name="ReportToAnalyst" Value="True" />
+                        <om:Property Name="Signal" Value="False" />
+                    </om:Element>
+                </om:Element>
+                <om:Element Type="Construct" OID="34e545d2-eccb-43f2-8ced-111da139e2f0" ParentLink="ServiceBody_Statement" LowerBound="38.1" HigherBound="44.1">
+                    <om:Property Name="ReportToAnalyst" Value="True" />
+                    <om:Property Name="Name" Value="ConstructMessage_2" />
+                    <om:Property Name="Signal" Value="True" />
+                    <om:Element Type="Transform" OID="5ec669d4-4b0c-42e4-8b32-bfeb477da4ab" ParentLink="ComplexStatement_Statement" LowerBound="41.1" HigherBound="43.1">
+                        <om:Property Name="ClassName" Value="GLC.Integration.CargowiseOne.Remodeez.TransformUniversalshipmenttoInterchangeremodeez" />
+                        <om:Property Name="ReportToAnalyst" Value="True" />
+                        <om:Property Name="Name" Value="Transform_2" />
+                        <om:Property Name="Signal" Value="True" />
+                        <om:Element Type="MessagePartRef" OID="e9129dec-0052-44da-9af0-52d528c823bb" ParentLink="Transform_InputMessagePartRef" LowerBound="42.133" HigherBound="42.141">
+                            <om:Property Name="MessageRef" Value="Shipment" />
+                            <om:Property Name="ReportToAnalyst" Value="True" />
+                            <om:Property Name="Name" Value="MessagePartReference_3" />
+                            <om:Property Name="Signal" Value="False" />
+                        </om:Element>
+                        <om:Element Type="MessagePartRef" OID="75b5f7d8-648c-40a9-9748-19227b8c11a1" ParentLink="Transform_OutputMessagePartRef" LowerBound="42.28" HigherBound="42.42">
+                            <om:Property Name="MessageRef" Value="CW1Interchange" />
+                            <om:Property Name="ReportToAnalyst" Value="True" />
+                            <om:Property Name="Name" Value="MessagePartReference_4" />
+                            <om:Property Name="Signal" Value="False" />
+                        </om:Element>
+                    </om:Element>
+                    <om:Element Type="MessageRef" OID="6b17e768-ad29-4911-862e-7a8a84cb61d9" ParentLink="Construct_MessageRef" LowerBound="39.23" HigherBound="39.37">
+                        <om:Property Name="Ref" Value="CW1Interchange" />
+                        <om:Property Name="ReportToAnalyst" Value="True" />
+                        <om:Property Name="Signal" Value="False" />
+                    </om:Element>
+                </om:Element>
+                <om:Element Type="Send" OID="e2bc62f4-0f8f-4aad-b643-9d386fcbfc82" ParentLink="ServiceBody_Statement" LowerBound="44.1" HigherBound="46.1">
+                    <om:Property Name="PortName" Value="SendWalmartInterchange" />
+                    <om:Property Name="MessageName" Value="CW1Interchange" />
+                    <om:Property Name="OperationName" Value="Operation_1" />
+                    <om:Property Name="OperationMessageName" Value="Request" />
+                    <om:Property Name="ReportToAnalyst" Value="True" />
+                    <om:Property Name="Name" Value="Send_1" />
+                    <om:Property Name="Signal" Value="True" />
+                </om:Element>
+            </om:Element>
+            <om:Element Type="PortDeclaration" OID="e4934fea-9689-4f00-8e77-99acd4db30f4" ParentLink="ServiceDeclaration_PortDeclaration" LowerBound="21.1" HigherBound="23.1">
+                <om:Property Name="PortModifier" Value="Implements" />
+                <om:Property Name="Orientation" Value="Left" />
+                <om:Property Name="PortIndex" Value="-1" />
+                <om:Property Name="IsWebPort" Value="False" />
+                <om:Property Name="OrderedDelivery" Value="False" />
+                <om:Property Name="DeliveryNotification" Value="None" />
+                <om:Property Name="Type" Value="GLC.Integration.CargowiseOne.Remodeez.PortType_3" />
+                <om:Property Name="ParamDirection" Value="In" />
+                <om:Property Name="ReportToAnalyst" Value="True" />
+                <om:Property Name="Name" Value="ReceiveWalmart" />
+                <om:Property Name="Signal" Value="False" />
+                <om:Element Type="LogicalBindingAttribute" OID="cedf2d6e-5c5a-49c3-ade1-0e1aababbdf7" ParentLink="PortDeclaration_CLRAttribute" LowerBound="21.1" HigherBound="22.1">
+                    <om:Property Name="Signal" Value="False" />
+                </om:Element>
+            </om:Element>
+            <om:Element Type="PortDeclaration" OID="07a990c3-8ac5-43e9-97f4-504a2d7f25ba" ParentLink="ServiceDeclaration_PortDeclaration" LowerBound="23.1" HigherBound="25.1">
+                <om:Property Name="PortModifier" Value="Uses" />
+                <om:Property Name="Orientation" Value="Right" />
+                <om:Property Name="PortIndex" Value="-1" />
+                <om:Property Name="IsWebPort" Value="False" />
+                <om:Property Name="OrderedDelivery" Value="False" />
+                <om:Property Name="DeliveryNotification" Value="None" />
+                <om:Property Name="Type" Value="GLC.Integration.CargowiseOne.Remodeez.PortType_5" />
+                <om:Property Name="ParamDirection" Value="In" />
+                <om:Property Name="ReportToAnalyst" Value="True" />
+                <om:Property Name="Name" Value="SendWalmartInterchange" />
+                <om:Property Name="Signal" Value="False" />
+                <om:Element Type="DirectBindingAttribute" OID="8d03afad-1541-4252-ad6c-2bde559ee1bd" ParentLink="PortDeclaration_CLRAttribute" LowerBound="23.1" HigherBound="24.1">
+                    <om:Property Name="DirectBindingType" Value="MessageBox" />
+                    <om:Property Name="Signal" Value="False" />
+                </om:Element>
+            </om:Element>
+            <om:Element Type="MessageDeclaration" OID="a545b088-a6b2-4f0c-bfa1-5785119673fc" ParentLink="ServiceDeclaration_MessageDeclaration" LowerBound="25.1" HigherBound="26.1">
+                <om:Property Name="Type" Value="GLC.Integration.CargowiseoneInboundCommon.Schemas.EDI940.EDI940Xml" />
+                <om:Property Name="ParamDirection" Value="In" />
+                <om:Property Name="ReportToAnalyst" Value="True" />
+                <om:Property Name="Name" Value="ReceiveEDIInterchange" />
+                <om:Property Name="Signal" Value="True" />
+            </om:Element>
+            <om:Element Type="MessageDeclaration" OID="fbfb60ce-1c35-4cb9-911c-5ba80fd53c95" ParentLink="ServiceDeclaration_MessageDeclaration" LowerBound="26.1" HigherBound="27.1">
+                <om:Property Name="Type" Value="GLC.Integration.CargowiseoneInboundCommon.Schemas.UniversalShipment" />
+                <om:Property Name="ParamDirection" Value="In" />
+                <om:Property Name="ReportToAnalyst" Value="True" />
+                <om:Property Name="Name" Value="Shipment" />
+                <om:Property Name="Signal" Value="True" />
+            </om:Element>
+            <om:Element Type="MessageDeclaration" OID="af362332-aa0b-429f-8848-4b07643df33b" ParentLink="ServiceDeclaration_MessageDeclaration" LowerBound="27.1" HigherBound="28.1">
+                <om:Property Name="Type" Value="GLC.Integration.CargowiseoneInboundCommon.Schemas.UniversalInterchange" />
+                <om:Property Name="ParamDirection" Value="In" />
+                <om:Property Name="ReportToAnalyst" Value="True" />
+                <om:Property Name="Name" Value="CW1Interchange" />
+                <om:Property Name="Signal" Value="True" />
+            </om:Element>
+        </om:Element>
+    </om:Element>
+</om:MetaModel>
+#endif // __DESIGNER_DATA
+[Microsoft.XLANGs.BaseTypes.BPELExportable(false)]
+module GLC.Integration.CargowiseOne.Remodeez
+{
+    internal porttype PortType_3
+    {
+        oneway Operation_1
+        {
+            GLC.Integration.CargowiseoneInboundCommon.Schemas.EDI940.EDI940Xml
+        };
+    };
+    internal porttype PortType_5
+    {
+        oneway Operation_1
+        {
+            GLC.Integration.CargowiseoneInboundCommon.Schemas.UniversalInterchange
+        };
+    };
+    [Microsoft.XLANGs.BaseTypes.BPELExportable(false)]
+    internal service ProcessWalmart
+    {
+        [Microsoft.XLANGs.BaseTypes.LogicalBinding()]
+        port implements PortType_3 ReceiveWalmart;
+        [Microsoft.XLANGs.BaseTypes.DirectBinding()]
+        port uses PortType_5 SendWalmartInterchange;
+        message GLC.Integration.CargowiseoneInboundCommon.Schemas.EDI940.EDI940Xml ReceiveEDIInterchange;
+        message GLC.Integration.CargowiseoneInboundCommon.Schemas.UniversalShipment Shipment;
+        message GLC.Integration.CargowiseoneInboundCommon.Schemas.UniversalInterchange CW1Interchange;
+        body ()
+        {
+            [Microsoft.XLANGs.BaseTypes.DesignerPosition("567129b1-ef2c-43ba-b8c2-704c94be263f")]
+            activate receive (ReceiveWalmart.Operation_1, ReceiveEDIInterchange);
+            [Microsoft.XLANGs.BaseTypes.DesignerPosition("46f0bb1b-2721-4b39-9b71-1a210b5762ce")]
+            construct Shipment
+            {
+                [Microsoft.XLANGs.BaseTypes.DesignerPosition("b9c7dde4-3eaa-4ede-b835-c6fb9c2cd4f1")]
+                transform (Shipment) = GLC.Integration.CargowiseOne.Remodeez.Schemas.TransformEDI940WALToUniversalShipment (ReceiveEDIInterchange);
+            }
+            [Microsoft.XLANGs.BaseTypes.DesignerPosition("34e545d2-eccb-43f2-8ced-111da139e2f0")]
+            construct CW1Interchange
+            {
+                [Microsoft.XLANGs.BaseTypes.DesignerPosition("5ec669d4-4b0c-42e4-8b32-bfeb477da4ab")]
+                transform (CW1Interchange) = GLC.Integration.CargowiseOne.Remodeez.TransformUniversalshipmenttoInterchangeremodeez (Shipment);
+            }
+            [Microsoft.XLANGs.BaseTypes.DesignerPosition("e2bc62f4-0f8f-4aad-b643-9d386fcbfc82")]
+            send (SendWalmartInterchange.Operation_1, CW1Interchange);
+        }
+    }
+}
+
