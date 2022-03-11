@@ -115,9 +115,15 @@
       <Namespace>GLC.Integration.CargowiseOne.Remodeez._945_outbound</Namespace>
       <SubType>Task</SubType>
     </Map>
+    <Content Include="945_outbound\TransformEDI945InterchangetoEvent945.xslt" />
     <Content Include="945_outbound\TransformEDI945InterchangetoShipment945.xslt">
       <SubType>Designer</SubType>
     </Content>
+    <Map Include="945_outbound\TransformInterchange_UniversalEvent.btm">
+      <TypeName>TransformInterchange_UniversalEvent</TypeName>
+      <Namespace>GLC.Integration.CargowiseOne.Remodeez._945_outbound</Namespace>
+      <SubType>Task</SubType>
+    </Map>
     <Content Include="945_outbound\TransformUniversalShipmentToEDI945.xslt">
       <SubType>Designer</SubType>
     </Content>
@@ -126,6 +132,19 @@
       <Namespace>GLC.Integration.CargowiseOne.Remodeez.Orchestration</Namespace>
       <SubType>Task</SubType>
     </XLang>
+    <Map Include="Schemas\TransformEDI940ACEToUniversalShipment.btm">
+      <TypeName>TransformEDI940ACEToUniversalShipment</TypeName>
+      <Namespace>GLC.Integration.CargowiseOne.Remodeez.Schemas</Namespace>
+      <SubType>Task</SubType>
+    </Map>
+    <XLang Include="Orchestration\ProcessACE940.odx">
+      <TypeName>ProcessACE940</TypeName>
+      <Namespace>GLC.Integration.CargowiseOne.Remodeez.Orchestration</Namespace>
+      <SubType>Task</SubType>
+    </XLang>
+    <Content Include="Schemas\TransformEDI940ACEToUniversalShipment.xslt">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Schemas\TransformEDI940AMZToUniversalShipment.xslt">
       <SubType>Designer</SubType>
     </Content>

@@ -24,17 +24,17 @@ namespace GLC.Integration.CargowiseOne.Remodeez._945_outbound {
         <W0602>
           <xsl:value-of select=""s0:Shipment/s0:Order/s0:OrderNumber/text()"" />
          </W0602>
-        <xsl:for-each select=""s0:Shipment/s0:DataContext"">
-          <xsl:for-each select=""s0:EventType"">
-            <xsl:variable name=""var:v1"" select=""userCSharp:LogicalEq(string(s0:Code/text()) , &quot;FIN&quot;)"" />
-            <xsl:if test=""string($var:v1)='true'"">
-              <xsl:variable name=""var:v2"" select=""userCSharp:Getdateformat(../s0:TriggerDate/text())"" />
-              <W0603>
-                <xsl:value-of select=""$var:v2"" />
+        <xsl:for-each select=""s0:Shipment/s0:MilestoneCollection/s0:Milestone"">
+
+          <xsl:if test=""s0:EventCode/text()='FIN'"">
+            <W0603>
+                <xsl:value-of select=""userCSharp:Getdateformat(s0:ActualDate/text())"" />
               </W0603>
-            </xsl:if>
-          </xsl:for-each>
+            </xsl:if>          
         </xsl:for-each>
+        <W0604>
+          <xsl:value-of select=""s0:Shipment/s0:Order/s0:ClientReference/text()"" />
+        </W0604>
         <W0606>
           <xsl:value-of select=""s0:Shipment/s0:Order/s0:ClientReference/text()"" />  
       </W0606>
@@ -64,7 +64,7 @@ namespace GLC.Integration.CargowiseOne.Remodeez._945_outbound {
       <xsl:variable name=""varAmazlookup"">
         <xsl:for-each select=""//s0:CustomizedFieldCollection"">
           <xsl:for-each select=""s0:CustomizedField"">
-            <xsl:if test=""s0:Value/text()='080ALLREMODEEZ0'"">
+            <xsl:if test=""s0:Key/text()='N9*23'"">
               <xsl:value-of select=""s0:Value/text()""/>
             </xsl:if>
           </xsl:for-each>
@@ -322,6 +322,16 @@ namespace GLC.Integration.CargowiseOne.Remodeez._945_outbound {
             <G6202>
               <xsl:value-of select=""userCSharp:Getdateformat(s0:ActualDate/text())""/>
             </G6202>
+            <G6203>A</G6203>
+            <G6204>
+              <xsl:value-of select=""userCSharp:Gettimeformat(s0:ActualDate/text())""/>
+            </G6204>
+            <!--<G6204>
+              <xsl:value-of select=""userCSharp:Getminuteformat(s0:ActualDate/text())""/>
+            </G6204>
+            <G6205>
+              <xsl:value-of select=""userCSharp:Getsecondsformat(s0:ActualDate/text())""/>
+            </G6205>-->
             
           </ns0:G62>
 
@@ -336,6 +346,16 @@ namespace GLC.Integration.CargowiseOne.Remodeez._945_outbound {
                   <G6202>
                     <xsl:value-of select=""userCSharp:getadddate($eventdate)""/>
                   </G6202>
+                  <G6203>A</G6203>
+                  <G6204>
+                    <xsl:value-of select=""userCSharp:Gettimeformat($eventdate)""/>
+                  </G6204>
+                  <!--<G6204>
+                    <xsl:value-of select=""userCSharp:Getminuteformat($eventdate)""/>
+                  </G6204>
+                  <G6205>
+                    <xsl:value-of select=""userCSharp:Getsecondsformat($eventdate)""/>
+                  </G6205>-->
 
                 </ns0:G62>
               </xsl:if>
@@ -357,19 +377,40 @@ namespace GLC.Integration.CargowiseOne.Remodeez._945_outbound {
         </xsl:for-each>
         
       </xsl:variable>
-
-      <!--<xsl:for-each select=""s0:Shipment/s0:OrganizationAddressCollection/s0:OrganizationAddress"">
-        <xsl:if test=""s0:AddressType/text()='TransportCompanyDocumentaryAddress'"">-->
-          <ns0:W27>
-            <W2701>
-              <xsl:text>M</xsl:text>
-            </W2701>
-            <W2702>
-              <xsl:value-of select=""/*[local-name()='UniversalShipment' and namespace-uri()='http://www.cargowise.com/Schemas/Universal/2011/11']/*[local-name()='Shipment' and namespace-uri()='http://www.cargowise.com/Schemas/Universal/2011/11']/*[local-name()='AdditionalReferenceCollection' and namespace-uri()='http://www.cargowise.com/Schemas/Universal/2011/11']/*[local-name()='AdditionalReference' and namespace-uri()='http://www.cargowise.com/Schemas/Universal/2011/11']/*[local-name()='ReferenceNumber' and namespace-uri()='http://www.cargowise.com/Schemas/Universal/2011/11']""/>
-            </W2702>            
-          </ns0:W27>
-        <!--</xsl:if>
-      </xsl:for-each>-->
+      <!--<xsl:choose>
+        <xsl:when test=""($varAmazlookup='525ALLREMODEEZ0')"">-->
+          <xsl:for-each select=""s0:Shipment/s0:OrganizationAddressCollection/s0:OrganizationAddress"">
+            <xsl:if test=""s0:AddressType/text()='TransportCompanyDocumentaryAddress'"">
+              <ns0:W27>
+                <W2701>
+                  <xsl:text>M</xsl:text>
+                </W2701>
+                <W2702>
+                  <xsl:value-of select=""/*[local-name()='UniversalShipment' and namespace-uri()='http://www.cargowise.com/Schemas/Universal/2011/11']/*[local-name()='Shipment' and namespace-uri()='http://www.cargowise.com/Schemas/Universal/2011/11']/*[local-name()='AdditionalReferenceCollection' and namespace-uri()='http://www.cargowise.com/Schemas/Universal/2011/11']/*[local-name()='AdditionalReference' and namespace-uri()='http://www.cargowise.com/Schemas/Universal/2011/11']/*[local-name()='ReferenceNumber' and namespace-uri()='http://www.cargowise.com/Schemas/Universal/2011/11']""/>
+                </W2702>
+                <W2703>
+                  <xsl:value-of select=""s0:CompanyName/text()""/>
+                </W2703>
+              </ns0:W27>
+            </xsl:if>
+          </xsl:for-each>
+        <!--</xsl:when>
+        <xsl:otherwise>
+          --><!--<xsl:for-each select=""s0:Shipment/s0:OrganizationAddressCollection/s0:OrganizationAddress"">
+            <xsl:if test=""s0:AddressType/text()='TransportCompanyDocumentaryAddress'"">--><!--
+              <ns0:W27>
+                <W2701>
+                  <xsl:text>M</xsl:text>
+                </W2701>
+                <W2703>
+                  <xsl:value-of select=""/*[local-name()='UniversalShipment' and namespace-uri()='http://www.cargowise.com/Schemas/Universal/2011/11']/*[local-name()='Shipment' and namespace-uri()='http://www.cargowise.com/Schemas/Universal/2011/11']/*[local-name()='AdditionalReferenceCollection' and namespace-uri()='http://www.cargowise.com/Schemas/Universal/2011/11']/*[local-name()='AdditionalReference' and namespace-uri()='http://www.cargowise.com/Schemas/Universal/2011/11']/*[local-name()='ReferenceNumber' and namespace-uri()='http://www.cargowise.com/Schemas/Universal/2011/11']""/>
+                </W2703>
+              </ns0:W27>
+            --><!--</xsl:if>
+          </xsl:for-each>--><!--
+        </xsl:otherwise>
+      </xsl:choose>-->
+      
       <xsl:for-each select=""s0:Shipment/s0:Order/s0:OrderLineCollection/s0:OrderLine"">
         
           <xsl:variable name=""varprodcodelist"" select =""s0:Product/s0:Code/text()""/>
@@ -393,6 +434,9 @@ namespace GLC.Integration.CargowiseOne.Remodeez._945_outbound {
               </xsl:if>
             </xsl:for-each>
           </xsl:variable>
+        <xsl:choose>
+          <xsl:when test=""//s0:PackingLineCollection"">
+       
           <xsl:for-each select=""//s0:PackingLineCollection"">
             <xsl:for-each select=""s0:PackingLine"">
               <xsl:for-each select=""s0:PackedItemCollection"">
@@ -413,7 +457,6 @@ namespace GLC.Integration.CargowiseOne.Remodeez._945_outbound {
               <MAN02>
                 <xsl:value-of select=""concat('00',../../s0:ReferenceNumber/text())"" />
               </MAN02>
-
             </xsl:if>
            
           </ns0:MAN>
@@ -445,13 +488,14 @@ namespace GLC.Integration.CargowiseOne.Remodeez._945_outbound {
                           <xsl:value-of select=""s0:PackedQuantity/text()""/>
                         </W1203>
                         <W1204>0</W1204>
-                        <xsl:if test=""($varVendorvalue!='') or ($varAmazlookup='080ALLREMODEEZ0')"">
+                        <xsl:if test=""($varVendorvalue!='') or ($varAmazlookup='080ALLREMODEEZ0')  or ($varAmazlookup='525ALLREMODEEZ0')"">
                           <W1205>
                             <xsl:text>UN</xsl:text>
                           </W1205>
                         </xsl:if>
                             <xsl:choose>
-                              <xsl:when test=""$varAmazlookup='080ALLREMODEEZ0'"">
+                              <xsl:when test=""($varAmazlookup='080ALLREMODEEZ0') or ($varAmazlookup='525ALLREMODEEZ0') "">
+                                
                                 <W1206>
                                   <xsl:value-of select=""concat('0000',$varprodcodelist)""/>
                                 </W1206>
@@ -492,9 +536,13 @@ namespace GLC.Integration.CargowiseOne.Remodeez._945_outbound {
                      <!--<xsl:variable name=""varProdcode"" select=""ScriptNS0:GetProdCode(s0:Description/text())""/>
                       <xsl:if test=""$varprodcodelist=$varProdcode"">-->
                                           
-                      <!--</xsl:if>-->                       
-                    
-                    
+                      <!--</xsl:if>-->
+
+                     <ns0:G69>
+                       <G6901>
+                         <xsl:value-of select=""$varprodcodelist1""/>
+                       </G6901>
+                     </ns0:G69>
                     
                     </ns0:W12Loop1>
                   </ns0:LXLoop1>
@@ -504,7 +552,99 @@ namespace GLC.Integration.CargowiseOne.Remodeez._945_outbound {
               </xsl:for-each>
             
             </xsl:for-each>
-        
+         </xsl:when>
+          
+          <xsl:otherwise>
+            
+               <ns0:LXLoop1>
+                      <ns0:LX>
+                        <LX01>
+                          <xsl:value-of select=""$varlxcnt""/>
+                        </LX01>
+                      </ns0:LX>
+          <ns0:MAN>
+            <MAN01>GM</MAN01>          
+              <MAN02></MAN02>           
+          </ns0:MAN>                
+                   <ns0:W12Loop1>
+                      <ns0:W12>
+                        <W1201>
+                          <xsl:text>CC</xsl:text>
+                        </W1201>
+                        <!--<xsl:variable name=""varProdcode"" select=""ScriptNS0:GetProdCode(s0:Description/text())""/>-->
+                        <!--<xsl:variable name=""varQuantity"" select =""ScriptNS0:Get945convPCE($varProdcode,userCSharp:replacefunc(s0:PackedQuantity/text()))""/>-->
+                        <W1202>
+                          <xsl:value-of select=""s0:OrderedQty/text()""/>
+                        </W1202>
+                        <!--<xsl:variable name=""varw1203"" select=""ScriptNS0:Get945convPCE(../s0:Product/s0:Code/text(),userCSharp:replacefunc(../s0:QuantityMet/text()))""/>-->
+                        <W1203>
+                          <xsl:value-of select=""s0:QuantityMet/text()""/>
+                        </W1203>
+                        <W1204>
+                          <xsl:value-of select=""userCSharp:getdifford(s0:OrderedQty/text(),s0:QuantityMet/text())""/>
+                        </W1204>
+                        <xsl:if test=""($varVendorvalue!='') or ($varAmazlookup='080ALLREMODEEZ0')  or ($varAmazlookup='525ALLREMODEEZ0')"">
+                          <W1205>
+                            <xsl:text>UN</xsl:text>
+                          </W1205>
+                        </xsl:if>
+                            <xsl:choose>
+                              <xsl:when test=""($varAmazlookup='080ALLREMODEEZ0') or ($varAmazlookup='525ALLREMODEEZ0') "">
+                                
+                                <W1206>
+                                  <xsl:value-of select=""concat('0000',$varprodcodelist)""/>
+                                </W1206>
+                              </xsl:when>
+                              <xsl:otherwise>
+                                <W1206>
+                                  <xsl:value-of select=""$varVendorvalue""/>
+                                </W1206>
+                              </xsl:otherwise>
+                            </xsl:choose>                       
+                         
+                       
+                       
+                        <W1217>
+                          <xsl:text>VN</xsl:text>
+                        </W1217>
+                        <W1218>
+                          <xsl:value-of select=""$varprodcodelist""/>
+                        </W1218>
+                        <xsl:if test=""$varPartvalue!=''"">
+                        <W1221>
+                          <xsl:text>BP</xsl:text>
+                        </W1221>
+                       
+                          <W1222>
+                            <xsl:value-of select=""$varPartvalue""/>
+                          </W1222>
+                        </xsl:if>
+                        
+                      </ns0:W12>
+                    <!--<ns0:N9_3>
+                        <N901>LI</N901>
+                          <N902>
+                            <xsl:value-of select =""$varProdVal""/>
+                    </N902>
+                      </ns0:N9_3>-->
+                     <!--<xsl:variable name=""varCTNWeight"" select=""ScriptNS0:Get945convPCEWeight($varProdcode,userCSharp:replacefunc(s0:PackedQuantity/text()))""/>-->
+                     <!--<xsl:variable name=""varProdcode"" select=""ScriptNS0:GetProdCode(s0:Description/text())""/>
+                      <xsl:if test=""$varprodcodelist=$varProdcode"">-->
+                                          
+                      <!--</xsl:if>-->
+
+                     <ns0:G69>
+                       <G6901>
+                         <xsl:value-of select=""$varprodcodelist1""/>
+                       </G6901>
+                     </ns0:G69>
+                    
+                    </ns0:W12Loop1>
+                  </ns0:LXLoop1>
+          
+          </xsl:otherwise>
+          
+           </xsl:choose>
     
       </xsl:for-each>
       <xsl:value-of select=""userCSharp:resetcnt()""/>
@@ -544,6 +684,12 @@ namespace GLC.Integration.CargowiseOne.Remodeez._945_outbound {
       return lxcnt;
     }
     
+    public int getdifford (int a, int b)
+    {
+    int c= a-b;
+    return c;
+    }
+    
     public void resetcnt()
     {
       lxcnt=0;
@@ -552,6 +698,7 @@ namespace GLC.Integration.CargowiseOne.Remodeez._945_outbound {
     {
     double b=0;
       b=a*2.2;
+      b=Math.Round(b,2);
       return b;
       }
     
@@ -574,7 +721,15 @@ namespace GLC.Integration.CargowiseOne.Remodeez._945_outbound {
             return strin;
     }
     
-        
+    public string Gettimeformat(string strin)
+    {
+      DateTime dt3=new DateTime();
+      dt3 =Convert.ToDateTime(strin);
+      strin=dt3.ToString(""HHmmss"");
+      return strin;
+      }   
+    
+     
     public string getadddate(string strin)
     {
           DateTime dt2 = new DateTime();
